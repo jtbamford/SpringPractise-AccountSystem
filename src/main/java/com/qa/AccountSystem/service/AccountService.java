@@ -6,12 +6,16 @@ import org.springframework.stereotype.Service;
 import com.qa.AccountSystem.constants.Constants;
 import com.qa.AccountSystem.domain.Account;
 import com.qa.AccountSystem.repository.IAccountRepository;
+import com.qa.AccountSystem.webservices.IConsumeAccountNumberGenerator;
 
 @Service
 public class AccountService implements IAccountService {
 	
 	@Autowired
 	private IAccountRepository repo;
+	
+	@Autowired
+	private IConsumeAccountNumberGenerator numgen;
 	
 	
 	public Iterable<Account> getAllAccounts() {
@@ -24,7 +28,7 @@ public class AccountService implements IAccountService {
 	}
 
 	public Account createAccount(Account account) {
-		account.setAccountNumber("1"); //implement other API
+		account.setAccountNumber(numgen.consumeAccountNumber()); //implement other API
 		return repo.save(account);
 	}
 	

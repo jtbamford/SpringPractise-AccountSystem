@@ -28,7 +28,7 @@ public class AccountService implements IAccountService {
 	}
 
 	public Account createAccount(Account account) {
-		account.setAccountNumber(numgen.consumeAccountNumber()); //implement other API
+		account.setAccountNumber(numgen.consumeAccountNumber(account)); //implement other API
 		return repo.save(account);
 	}
 	

@@ -52,4 +52,5 @@ public class POJOAccount implements Serializable {
 		this.accountNumber = accountNumber;
 	}
 
+
 }

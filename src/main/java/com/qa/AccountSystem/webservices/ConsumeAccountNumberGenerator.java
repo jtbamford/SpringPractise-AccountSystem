@@ -24,7 +24,7 @@ public class ConsumeAccountNumberGenerator implements IConsumeAccountNumberGener
 	public String consumeAccountNumber(Account account) {
 		String accountNum=restTemplate.postForObject("http://localhost:8084/numbergen/create","",String.class);
 		POJOAccount accountToSend = new POJOAccount();
-		accountToSend.setId(account.getId());
+		accountToSend.setId(1L);
 		accountToSend.setAccountNumber(accountNum);
 		accountToSend.setFirstName(account.getFirstName());
 		accountToSend.setLastName(account.getLastName());
